@@ -23,12 +23,12 @@ def load_and_process():
         )
         draw_graph_with_matching(G, matching, graph_frame)
 
+        instruction_label.pack_forget()
+
     except ValueError as e:
         messagebox.showerror("Error", f"{str(e)}")
     except Exception as e:
-        messagebox.showerror("Unexpected Error", "An unexpected error occurred. Please check your file format.\n\n" + str(e))
-    finally:
-        instruction_label.pack_forget()
+        messagebox.showerror("Unexpected Error", "Invalid input: the file may be empty, or not represent a valid graph. Please check your file format.")
 
 root = tk.Tk()
 root.title("Bipartite Graph Maximum Weight Matching")
@@ -59,3 +59,4 @@ graph_frame = ttk.Frame(main_frame)
 graph_frame.pack(fill="both", expand=True)
 
 root.mainloop()
+
